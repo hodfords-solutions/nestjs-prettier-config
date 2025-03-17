@@ -1,6 +1,6 @@
 {
   "name": "@hodfords/nestjs-prettier-config",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "",
   "main": "prettier.config.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/hodfords-solutions/nestjs-eslint-config.git"
   },
   "devDependencies": {
-    "prettier": "^3.4.2"
+    "prettier": "^3.5.3"
   },
   "peerDependencies": {
     "prettier": "^3.3.3"
