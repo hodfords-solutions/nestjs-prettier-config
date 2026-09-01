@@ -1,6 +1,7 @@
 {
   "name": "@hodfords/nestjs-prettier-config",
-  "version": "11.0.2",
+  "version": "12.0.0",
+  "packageManager": "pnpm@12.0.0",
   "description": "Prettier configuration for NestJS projects",
   "author": "Hodford's Solutions Limited",
   "license": "MIT",
@@ -13,7 +14,7 @@
     "url": "https://github.com/hodfords-solutions/nestjs-eslint-config.git"
   },
   "devDependencies": {
-    "prettier": "^3.8.1"
+    "prettier": "^3.9.6"
   },
   "peerDependencies": {
     "prettier": "^3.3.3"

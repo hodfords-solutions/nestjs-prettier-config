@@ -8,11 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - run: npm install
-      - run: npm publish --access public
+          node-version: 22
+          cache: pnpm
+      - name: Configure registry authentication
+        # pnpm 12 no longer expands ${NODE_AUTH_TOKEN} in a project .npmrc, it just drops the
+        # line, so the token has to be written out. It goes to the home directory rather than
+        # the package directory so it can never end up inside a published tarball.
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NODE_AUTH_TOKEN" > "$HOME/.npmrc"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   update-docs:
